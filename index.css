@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+/* arquivo: styles.css */
+
+body {
+  background-color: #282c34;
+  text-align: center;
+  margin: 0;
+  font-family: BebasNeue;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  font-family: 'Bebas Neue', cursive;
+  @apply text-white;
+}
+
+/* Buttons */
+button {
+  border: none;
+  cursor: pointer;
+  background-color: --color-black;
+  color: --color-white;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  margin-left: 2px;
+}
+
+/* Modal */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  border-radius: 4px;
+  padding: 25px;
+  background: $color-dark-grey;
+  color: $color-white;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-antontext {
+  font-family: 'Bebas Neue', cursive;
+}

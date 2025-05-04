@@ -19,8 +19,21 @@ export const formatTimer = (time: number): string => {
 const CountdownTimer: React.FC<CountdownTimerProps> = ({ time, onClick }) => {
   useEffect(() => {
     if (time === 0) {
-      const beep = new Audio('/sounds/beep.wav'); // Substitua pelo nome do arquivo baixado
-      beep.play();
+      const playBeep = () => {
+        const beep = new Audio('/sounds/beep.wav');
+        beep.play();
+      };
+  
+      playBeep(); // Toca imediatamente
+  
+      // Toca repetidamente a cada 500ms durante 2 segundos
+      const interval = setInterval(playBeep, 300);
+      const stop = setTimeout(() => clearInterval(interval), 2000);
+  
+      return () => {
+        clearInterval(interval);
+        clearTimeout(stop);
+      };
     }
   }, [time]);
 

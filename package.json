@@ -1,8 +1,8 @@
 {
   "name": "vite-example",
-  "packageManager": "yarn@3.3.0",
+  "packageManager": "pnpm@8.15.4",
   "scripts": {
-    "sdk": "yarn dlx @yarnpkg/sdks vscode",
+    "sdk": "pnpm dlx @yarnpkg/sdks vscode",
     "dev": "vite --port 8000",
     "build": "vite build",
     "preview": "vite preview"
@@ -22,6 +22,7 @@
     "@typescript-eslint/parser": "^5.47.1",
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.14",
+    "esbuild": "^0.25.3",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react-hooks": "^4.6.0",

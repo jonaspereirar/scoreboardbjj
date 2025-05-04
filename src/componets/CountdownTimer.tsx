@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export interface CountdownTimerProps {
   time: number;
@@ -6,8 +6,9 @@ export interface CountdownTimerProps {
 }
 
 export const formatTimer = (time: number): string => {
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
+  const safeTime = Math.max(time, 0);
+  const minutes = Math.floor(safeTime / 60);
+  const seconds = safeTime % 60;
 
   const minutesStr = minutes < 10 ? `0${minutes}` : minutes.toString();
   const secondsStr = seconds < 10 ? `0${seconds}` : seconds.toString();
@@ -15,13 +16,17 @@ export const formatTimer = (time: number): string => {
   return `${minutesStr}:${secondsStr}`;
 };
 
-const CountdownTimer: React.FC<CountdownTimerProps> = (props) => {
+const CountdownTimer: React.FC<CountdownTimerProps> = ({ time, onClick }) => {
+  useEffect(() => {
+    if (time === 0) {
+      const beep = new Audio('/sounds/beep.wav'); // Substitua pelo nome do arquivo baixado
+      beep.play();
+    }
+  }, [time]);
+
   return (
-    <div
-      className={props.time === 0 ? 'time-over' : ''}
-      onClick={props.onClick}
-    >
-      {formatTimer(props.time)}
+    <div className={time === 0 ? 'time-over' : ''} onClick={onClick}>
+      {formatTimer(time)}
     </div>
   );
 };
